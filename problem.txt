@@ -1,0 +1,27 @@
+Demeli login olduqda seni atmalidi profile
+hemcinin sen register olanda da atmalidi profile 
+
+
+home de sen login olanda bunu atir ...
+```
+AttributeError at /login/
+'SafeString' object has no attribute 'get'
+Request Method:	GET
+Request URL:	http://127.0.0.1:8000/login/?next=/profile/
+Django Version:	5.1.5
+Exception Type:	AttributeError
+Exception Value:	
+'SafeString' object has no attribute 'get'
+Exception Location:	/Users/elcinquliyev/.local/share/virtualenvs/login-register-TtVlB1Qe/lib/python3.13/site-packages/django/middleware/clickjacking.py, line 27, in process_response
+Raised during:	accounts.views.login_view
+Python Executable:	/Users/elcinquliyev/.local/share/virtualenvs/login-register-TtVlB1Qe/bin/python
+Python Version:	3.13.1
+Python Path:	
+['/Users/elcinquliyev/Desktop/All folder/login-register',
+ '/Library/Frameworks/Python.framework/Versions/3.13/lib/python313.zip',
+ '/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13',
+ '/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/lib-dynload',
+ '/Users/elcinquliyev/.local/share/virtualenvs/login-register-TtVlB1Qe/lib/python3.13/site-packages']
+Server time:	Mon, 03 Feb 2025 12:42:24 +0400
+
+```
