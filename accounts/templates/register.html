@@ -1,0 +1,32 @@
+<form action="{% url 'register' %}" class="sign-up-form" method="POST" enctype="multipart/form-data">
+    {{ form.non_field_errors }}
+    {% csrf_token %}
+
+    <h2 class="title">Register Now!..</h2>
+    <div class="input-field">
+        <i class="fas fa-user"></i>
+        {{ register_form.username }} 
+        {{ register_form.image.errors }} 
+    </div>
+    <div class="input-field">
+        <i class="fas fa-envelope"></i>
+        {{ register_form.email }} 
+        {{ register_form.image.errors }} 
+    </div>
+    <div class="input-field">
+        <i class="fas fa-lock"></i>
+        {{ register_form.password }} 
+        {{ register_form.image.errors }} 
+        <i class="far fa-eye" id="toggleReg" style="cursor: pointer;"></i>
+    </div>
+    <div class="input-field">
+        <i class="fas fa-lock"></i>
+        {{ register_form.confirm_password }} 
+        {{ register_form.confirm_password.errors }} 
+        <i class="far fa-eye" id="toggleReg" style="cursor: pointer;"></i>
+    </div>
+    {{ register_form.image }} 
+    {{ register_form.image.errors }} 
+
+    <input type="submit" value="Create account" class="btn solid">
+</form>

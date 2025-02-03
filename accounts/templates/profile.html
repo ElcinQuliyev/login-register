@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="{%  static 'css/dashboard.css' %}">
+{% endblock %}
+
+{% block profile %}
+
+    <div class="dashboard-container">
+        <div class="sidebar">
+            <h2>Dashboard</h2>
+            <ul>
+                <li><a href="#" id="profileLink">Profile</a></li>
+                <li><a href="{% url 'auth-settings' %}" id="profileSettingsLink">Profile Settings</a></li>
+                <li><a href="#">Logout</a></li>
+            </ul>
+        </div>
+
+        <div class="main-content">
+            <header>
+                <h1>User Profile</h1>
+            </header>
+
+            <!-- Profile Section -->
+            <section id="profileSection">
+                <h2>Profile Information</h2>
+                <div class="profile-item">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" value="{{ request.user }}" disabled>
+                </div>
+
+                <div class="profile-item">
+                    <label for="lastname">Last Name:</label>
+                    <input type="text" id="lastname" value="" disabled>
+                </div>
+
+                <div class="profile-item">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" value="{{ request.user.email }}" disabled>
+                </div>
+
+                <div class="profile-item">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" value="" disabled>
+                </div>
+
+                <div class="profile-item">
+                    <label for="config_password">Configure Password:</label>
+                    <input type="password" id="config_password" value="" disabled>
+                </div>
+                <div class="profile-item">
+                    <label for="image">Configure Password:</label>
+                    <img  width="150"  height="150" src="{{request.user.image.url}}" alt="">
+                </div>
+                <div class="profile-actions">
+                    <button id="editProfileBtn">Edit Profile</button>
+                    <button id="exitBtn">Exit</button>
+                </div>
+            </section>
+            
+        </div>
+    </div>
+{% endblock %}
