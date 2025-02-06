@@ -1,34 +1,75 @@
-   <section id="profileSettingsSection" style="display: none;">
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{%  static 'css/dashboard.css' %}">
+{% endblock %}
+{% block content %}
+   <section id="profileSettingsSection" >
     <h2>Profile Settings</h2>
-    <form id="profileForm">
+    <form id="profileForm" action="" method="POST" enctype="multipart/form-data">
+        {% csrf_token  %}
         <div class="profile-item">
             <label for="editUsername">Username:</label>
-            <input type="text" id="editUsername" value="JohnDoe">
+            <input type="text" id="editUsername" value="{{request.user}}">
         </div>
 
         <div class="profile-item">
             <label for="editLastname">Last Name:</label>
-            <input type="text" id="editLastname" value="Doe">
+            <input type="text" id="editLastname" value="{{request.user.lastname}}">
         </div>
 
         <div class="profile-item">
             <label for="editEmail">Email:</label>
-            <input type="email" id="editEmail" value="johndoe@example.com">
+            <input type="email" id="editEmail" value="{{request.user.email}}
+            ">
         </div>
 
         <div class="profile-item">
             <label for="editPassword">Password:</label>
-            <input type="password" id="editPassword" value="******">
+            <input type="password" id="editPassword" value="{{request.user.password}}">
         </div>
 
         <div class="profile-item">
             <label for="editConfigPassword">Configure Password:</label>
-            <input type="password" id="editConfigPassword" value="******">
+            <input type="password" id="editConfigPassword" value="{{request.user.config_password}}">
+        </div>
+        <div class="profile-item">
+            <label for="image">Photo:</label>
+            <label for="imageUpload" style="width: 150px;">
+                {% if request.user.image %}
+                <img id="profilePic"  width="150" height="150" style="border-radius: 100px; cursor: pointer;"
+                    src="{{ request.user.image.url }}" alt="User Photo">
+                {% else %}
+                <p>No Image</p>
+                {% endif %}
+            </label>
+            <input type="file" id="imageUpload" name="image" style="display: none;" accept="image/*">
         </div>
 
         <div class="profile-actions">
             <button type="submit" id="saveProfileBtn">Save Profile</button>
-            <button type="button" id="cancelEditBtn">Cancel</button>
+            <a href="{% url 'profile' %}"  id="cancelEditBtn" style="padding: 10px; color: aliceblue; text-decoration: none; " >Profile</a>
         </div>
     </form>
-</section>
+
+
+<script>
+     // Preview the uploaded image instantly
+            document.getElementById("imageUpload").addEventListener("change", function (event) {
+                if (event.target.files && event.target.files[0]) {
+                    console.log(event.target.files[0]);
+                    
+                    // let userProfile = document.getElementById("userProfile");
+                    let profile = document.getElementById("profilePic");
+                    profile.src = URL.createObjectURL(event.target.files[0]);
+                    // userProfile.src = URL.createObjectURL(event.target.files[0]);
+                    output.style.display = 'block'; // Show the image
+                    console.log('Image uploaded successfully');
+                } else {
+                    console.log('No file selected');
+                }
+            });
+</script>
+    </section>
+{% endblock %}

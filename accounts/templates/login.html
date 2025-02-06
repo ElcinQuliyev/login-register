@@ -1,11 +1,11 @@
 
-<form action="" class="sign-in-form" method="POST">
+<form action="{% url 'login' %}" class="sign-in-form" method="POST">
   {% csrf_token %}
   <h2 class="title">Login Here MY Friend!..</h2>
 
   <div class="input-field">
     <i class="fas fa-user"></i>
-    {{ login_form.username }}
+    {{ login_form.email }}
   </div>
 
   <div class="input-field">
@@ -18,7 +18,8 @@
   <a href="{% url 'logout' %}" class="btn solid" style="text-align: center; padding-top: 14px;"> Logout</a>
   <p>{{ request.user }} </p>
   {% else %}
-  <a href="{% url 'profile' %}" class="btn solid" style="text-align: center; padding-top: 14px;"> Sign IN</a>
+  <!-- <a href="" class="btn solid" style="text-align: center; padding-top: 14px;"> Sign IN</a> -->
+   <input type="submit" class="btn solid" value="Login">
   {% endif %}
 </form>
 

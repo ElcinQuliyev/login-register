@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 
+DEFAULT = 'profile_image/test.webp'
 
 class User(AbstractUser):
     """    
@@ -15,8 +16,13 @@ class User(AbstractUser):
     """
     bio = models.CharField('bio', max_length=255, null=True, blank=True)
     image = models.ImageField(
-        'image', upload_to='media/profile_image/', null=True, blank=True)
+        'image', upload_to='profile_image/',
+        default=DEFAULT,
+        null=True, blank=True
+    )
     email = models.EmailField("email address", blank=True, unique=True)
+    
+    
 
     
     EMAIL_FIELD = 'email'

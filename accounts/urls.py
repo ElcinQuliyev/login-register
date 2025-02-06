@@ -11,12 +11,14 @@ from .views import (
 
 
 urlpatterns = [
+    
     path('home/', home, name='home'),
     path('register/', register_view, name='register'),
     path('login/', login_view, name='login'),
     path('logout/', logout_view, name='logout'),
     path('profile/', profile_view, name='profile'),
-    path('profile/settings', auth_settings_view, name='auth-settings'),
+    path('profile/settings/', auth_settings_view, name='settings'),
+    
     # path(
     #     "test-login/", 
     #     LoginView.as_view(),

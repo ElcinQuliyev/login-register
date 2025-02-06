@@ -34,9 +34,6 @@
     padding: 20px;
 }
 
-header h1 {
-    margin-bottom: 20px;
-}
 
 .profile-details,
 #profileSettingsSection {
@@ -78,6 +75,13 @@ header h1 {
 
 .profile-actions button:hover {
     background-color: #2980b9;
+}
+
+.head-profile{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
 }
 
 #saveProfileBtn {

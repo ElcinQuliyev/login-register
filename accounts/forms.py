@@ -52,9 +52,9 @@ class RegisterForm(forms.ModelForm):
 
 
 class LoginForm(forms.Form):
-    username = forms.CharField(max_length=200, widget=forms.TextInput(
+    email = forms.CharField(max_length=200, widget=forms.EmailInput(
         attrs={
-            'placeholder': 'Username'
+            'placeholder': 'Email'
         })
     )
     password = forms.CharField(max_length=200, widget=forms.PasswordInput(
@@ -63,11 +63,15 @@ class LoginForm(forms.Form):
         })
     )
 
-    # def clean(self):
-    #     username = self.cleaned_data['username']
-    #     password = self.cleaned_data['password']
-
-    #     # if password != confirm_password:
-    #     #     raise forms.ValidationError("Passwords do not match.")
-
-    # return ''
+class ProfileForm(forms.ModelForm):
+    
+    class Meta:
+        model=User
+        fields = [
+                'username',
+                'last_name',
+                'bio',
+                'email',
+                'password',
+                'image',
+            ]

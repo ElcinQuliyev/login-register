@@ -322,3 +322,16 @@ document.getElementById('cancelEditBtn').addEventListener('click', function() {
   document.getElementById('profileSettingsSection').style.display = 'none';
   document.getElementById('profileSection').style.display = 'block';
 });
+
+// Preview the uploaded image instantly
+document.getElementById("imageUpload").addEventListener("change", function(event) {  
+  let output = document.getElementById("profilePic");
+  output.src = URL.createObjectURL(event.target.files[0]);
+  
+});
+
+ 
+
+
+
+
